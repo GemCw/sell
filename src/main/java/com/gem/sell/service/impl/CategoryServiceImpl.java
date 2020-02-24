@@ -1,6 +1,6 @@
 package com.gem.sell.service.impl;
 
-import com.gem.sell.dataobject.Category;
+import com.gem.sell.dataobject.ProductCategory;
 import com.gem.sell.repository.CategoryRepository;
 import com.gem.sell.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,22 +17,22 @@ public class CategoryServiceImpl implements CategoryService {
     private CategoryRepository repository;
 
     @Override
-    public Category findOne(Integer categoryId) {
+    public ProductCategory findOne(Integer categoryId) {
         return repository.findOne(categoryId);
     }
 
     @Override
-    public List<Category> findAll() {
+    public List<ProductCategory> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public List<Category> findByCategoryTypeIn(List<Integer> categoryTypeList) {
+    public List<ProductCategory> findByCategoryTypeIn(List<Integer> categoryTypeList) {
         return  repository.findByCategoryTypeIn(categoryTypeList);
     }
 
     @Override
-    public Category save(Category Category) {
+    public ProductCategory save(ProductCategory Category) {
         return repository.save(Category);
     }
 }

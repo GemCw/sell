@@ -6,19 +6,16 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.Date;
 
 /**
  * @author 39726
- * @DynamicUpdate :动态更新数据库updateTime
  * @Data :自动生成get set方法
  */
 @Entity
-@DynamicUpdate
+@DynamicUpdate /**动态更新数据库updateTime*/
 @Data
-@Table(name = "product_category")
-public class Category {
+public class ProductCategory {
 
     /**类目id*/
     @Id
@@ -35,10 +32,10 @@ public class Category {
 
     private Date updateTime;
 
-    public Category() {
+    public ProductCategory() {
     }
 
-    public Category(String categoryName, Integer categoryType) {
+    public ProductCategory(String categoryName, Integer categoryType) {
         this.categoryName = categoryName;
         this.categoryType = categoryType;
     }

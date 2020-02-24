@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Data
-public class ProductInfo {
+public class  ProductInfo {
 
     @Id
     private String productId;

@@ -1,6 +1,6 @@
 package com.gem.sell.repository;
 
-import com.gem.sell.dataobject.Category;
+import com.gem.sell.dataobject.ProductCategory;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,22 +21,22 @@ public class CategoryRepositoryTest {
 
     @Test
     public void findOneTest(){
-        Category category = repository.findOne(3);
+        ProductCategory category = repository.findOne(3);
         System.out.println(category.toString());
     }
 
     @Test
     @Transactional//事务回滚 自动删除测试数据
     public void saveTest() {
-        Category category = new Category("女生最爱",10);
-        Category result = repository.save(category);
+        ProductCategory category = new ProductCategory("女生最爱",10);
+        ProductCategory result = repository.save(category);
         Assert.assertNotNull(result);
     }
 
     @Test
     public void findByCategoryTypeInTest(){
         List<Integer> list = Arrays.asList(2,3,4);
-        List<Category> result = repository.findByCategoryTypeIn(list);
+        List<ProductCategory> result = repository.findByCategoryTypeIn(list);
         Assert.assertNotEquals(0,result.size());
     }
 

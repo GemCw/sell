@@ -1,6 +1,6 @@
 package com.gem.sell.service;
 
-import com.gem.sell.dataobject.Category;
+import com.gem.sell.dataobject.ProductCategory;
 
 import java.util.List;
 
@@ -9,12 +9,12 @@ import java.util.List;
  */
 public interface CategoryService {
 
-    Category findOne(Integer CategoryId);
+    ProductCategory findOne(Integer CategoryId);
 
-    List<Category> findAll();
+    List<ProductCategory> findAll();
 
-    List<Category> findByCategoryTypeIn(List<Integer> CategoryTypeList);
+    List<ProductCategory> findByCategoryTypeIn(List<Integer> CategoryTypeList);
 
-    Category save(Category Category);
+    ProductCategory save(ProductCategory Category);
 
 }

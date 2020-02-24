@@ -1,6 +1,6 @@
 package com.gem.sell.service.impl;
 
-import com.gem.sell.dataobject.Category;
+import com.gem.sell.dataobject.ProductCategory;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,26 +25,26 @@ public class CategoryServiceImplTest {
 
     @Test
     public void findOne() {
-        Category category = categoryService.findOne(3);
+        ProductCategory category = categoryService.findOne(3);
         Assert.assertEquals(new Integer(3), category.getCategoryId());
     }
 
     @Test
     public void findAll() {
-        List<Category> CategoryList = categoryService.findAll();
+        List<ProductCategory> CategoryList = categoryService.findAll();
         Assert.assertNotEquals(0, CategoryList.size());
     }
 
     @Test
     public void findByCategoryTypeIn() {
-        List<Category> CategoryList = categoryService.findByCategoryTypeIn(Arrays.asList(1,2,3,4));
+        List<ProductCategory> CategoryList = categoryService.findByCategoryTypeIn(Arrays.asList(1,2,3,4));
         Assert.assertNotEquals(0, CategoryList.size());
     }
 
     @Test
     public void save() {
-        Category Category = new Category("男生专享", 10);
-        Category result = categoryService.save(Category);
+        ProductCategory Category = new ProductCategory("男生专享", 10);
+        ProductCategory result = categoryService.save(Category);
         Assert.assertNotNull(result);
     }
 
