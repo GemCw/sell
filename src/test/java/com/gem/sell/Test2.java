@@ -13,13 +13,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class Test2 {
     @Test
     public void test1() {
-        String name ="imooc";
-        String password = "123456";
-
-        log.debug("debug...");
-        log.info("info...");
-        log.info("name:{},password:{}",name,password);
-        log.error("error...");
+        int a=10>>1;
+        int b=a++;
+        int c=++a;
+        int d=b*a++;
+        System.out.println(a);
 
 
     }

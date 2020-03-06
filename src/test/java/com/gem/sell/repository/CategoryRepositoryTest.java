@@ -21,7 +21,7 @@ public class CategoryRepositoryTest {
 
     @Test
     public void findOneTest(){
-        ProductCategory category = repository.findOne(3);
+        ProductCategory category = repository.findOne(123456);
         System.out.println(category.toString());
     }
 

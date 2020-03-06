@@ -13,6 +13,7 @@ import com.gem.sell.exception.SellException;
 import com.gem.sell.repository.OrderDetailRepository;
 import com.gem.sell.repository.OrderMasterRepository;
 import com.gem.sell.service.OrderService;
+import com.gem.sell.service.PayService;
 import com.gem.sell.service.ProductService;
 import com.gem.sell.utils.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -47,8 +48,8 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     OrderMasterRepository orderMasterRepository;
 
-
-
+    @Autowired
+    PayService payService;
 
     @Override
     @Transactional
@@ -125,6 +126,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public Page<OrderDTO> findList(Pageable pageable) {
+        Page<OrderMaster> orderMasterPage = orderMasterRepository.findAll(pageable);
+
+        List<OrderDTO> orderDTOList = OrderMaster2OrderDTOConverter.convert(orderMasterPage.getContent());
+
+        return new PageImpl<>(orderDTOList,pageable,orderMasterPage.getTotalElements());
+    }
+
+    @Override
     @Transactional
     public OrderDTO cancel(OrderDTO orderDTO) {
         OrderMaster orderMaster = new OrderMaster();
@@ -152,7 +162,7 @@ public class OrderServiceImpl implements OrderService {
         productService.increaseStock(cartDTOList);
         //如果已支付，需要退款
         if(orderDTO.getOrderStatus().equals(PayStatusEnum.SUCCESS.getCode())){
-            //TODO
+            payService.refund(orderDTO);
         }
         return orderDTO;
     }

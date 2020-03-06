@@ -10,11 +10,10 @@ import java.util.Date;
 
 /**
  * @author 39726
- * @Data :自动生成get set方法
  */
 @Entity
 @DynamicUpdate /**动态更新数据库updateTime*/
-@Data
+@Data/**自动生成get set方法*/
 public class ProductCategory {
 
     /**类目id*/

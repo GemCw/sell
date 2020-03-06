@@ -11,6 +11,7 @@ public interface CategoryService {
 
     ProductCategory findOne(Integer CategoryId);
 
+    /**查询所有类目*/
     List<ProductCategory> findAll();
 
     List<ProductCategory> findByCategoryTypeIn(List<Integer> CategoryTypeList);

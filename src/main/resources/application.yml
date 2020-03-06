@@ -8,11 +8,35 @@ spring:
     show-sql: true
   jackson:
     default-property-inclusion: non_null
-
+  redis:
+    host: 127.0.0.1
+    port: 6379
 server:
     context-path: /sell
 
 wechat:
-  mpAppId: wxbd411b9ed8302b87
+#  公众账号，授权
+  mpAppId: wxd898fcb01713c658
   mpAppSecret: 70240bc9a8794ed5e64ed5337a794d50
+  #######测试号
+#  mpAppId: wxbd411b9ed8302b87
+#  mpAppSecret: 70240bc9a8794ed5e64ed5337a794d50
 
+#  开放平台，卖家扫码登录用
+  openAppId: wx6ad144e54af67d87
+  openAppSecrete: 91a2ff6d38a2bbccfb7e9f9079108e2e
+# 支付/商户号
+  mchId: 1483469312
+  mchKey: 098F6BCD4621D373CADE4E832627B4F6
+  keyPath: C:/workProject/weixin_cert/h5.p12
+  notifyUrl: http://lovebv.nat300.top/sell/pay/notify
+
+projectUrl:
+  wechatMpAuthorize: http://lovebv.nat300.top
+  wechatOpenAuthorize: http://lovebv.nat300.top
+  sell: http://lovebv.nat300.top
+
+#显示mybatis Sql语句执行
+logging:
+  level:
+    com.gem.sell.dataobject.mapper: trace

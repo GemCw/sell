@@ -32,6 +32,7 @@ public class CategoryServiceImplTest {
     @Test
     public void findAll() {
         List<ProductCategory> CategoryList = categoryService.findAll();
+
         Assert.assertNotEquals(0, CategoryList.size());
     }
 

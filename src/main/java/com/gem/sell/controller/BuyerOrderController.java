@@ -1,6 +1,8 @@
 package com.gem.sell.controller;
 
+import com.gem.sell.VO.OrderVO;
 import com.gem.sell.VO.ResultVO;
+import com.gem.sell.converter.OrderDTO2OrderVOConverter;
 import com.gem.sell.converter.OrderForm2OrderDTOConverter;
 import com.gem.sell.dto.OrderDTO;
 import com.gem.sell.enums.ResultEnum;
@@ -70,10 +72,10 @@ public class BuyerOrderController {
         PageRequest request = new PageRequest(page,size);
         Page<OrderDTO> orderDTOPage = orderService.findList(openid,request);
 
-//        Page<OrderVO> orderVOPage = new Page<>();
-//        BeanUtils.copyProperties(orderDTOPage,orderVOPage);
-        //TODO
-        return ResultVOUtil.success(orderDTOPage.getContent());
+        //DTOList转化成VOList
+        List<OrderVO> orderVOList = OrderDTO2OrderVOConverter.convert(orderDTOPage.getContent());
+
+        return ResultVOUtil.success(orderVOList);
     }
 
     /**订单详情*/

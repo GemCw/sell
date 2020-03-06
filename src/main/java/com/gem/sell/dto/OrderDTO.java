@@ -1,8 +1,12 @@
 package com.gem.sell.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.gem.sell.dataobject.OrderDetail;
+import com.gem.sell.enums.OrderStatusEnum;
+import com.gem.sell.enums.PayStatusEnum;
+import com.gem.sell.utils.EnumUtil;
 import com.gem.sell.utils.serializer.Date2LongSerializer;
 import lombok.Data;
 
@@ -17,7 +21,7 @@ import java.util.List;
  */
 @Data
 //@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)//过滤掉结果为null的字段
 public class OrderDTO {
 
     /** 订单id. */
@@ -54,4 +58,13 @@ public class OrderDTO {
 
     List<OrderDetail> orderDetailList;
 
+    @JsonIgnore//在实体类向前台返回数据时用来忽略不想传递给前台的属性或接口。
+    public OrderStatusEnum getOrderStatusEnum(){
+        return EnumUtil.getByCode(orderStatus,OrderStatusEnum.class);
+    }
+
+    @JsonIgnore
+    public PayStatusEnum getPayStatusEnum(){
+        return EnumUtil.getByCode(payStatus,PayStatusEnum.class);
+    }
 }
